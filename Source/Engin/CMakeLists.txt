@@ -1,18 +1,14 @@
-﻿# CMakeList.txt: GameEngin 的 CMake 项目，在此处包括源代码并定义
-# 项目特定的逻辑。
-#
+﻿
 
-# 将源代码添加到此项目的可执行文件。
-add_executable (Engin "GameEngin.cpp" "GameEngin.h")
 
-if (CMAKE_VERSION VERSION_GREATER 3.12)
-  set_property(TARGET Engin PROPERTY CXX_STANDARD 20)
-endif()
-
-target_link_libraries(Engin
-	PUBLIC
-		Core
-		fmt::fmt
+# 使用 glob 扫描源码 (开发阶段方便，生产环境建议手动列出)
+file(GLOB_RECURSE SOURCES
+    "*.cpp"
+    "*.h"
 )
 
-# TODO: 如有需要，请添加测试并安装目标。
+# 一行代码定义模块
+gameEngin_add_module(Engine
+    SOURCES ${SOURCES}
+    DEPENDS Core fmt::fmt # 依赖 Core 和 fmt
+)
