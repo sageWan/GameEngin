@@ -2,7 +2,7 @@ include(FetchContent)
 
 message(STATUS "Configuring dependencies...")
 
-FetchContent_Declear(
+FetchContent_Declare(
 	fmt
 	GIT_REPOSITORY git@github.com:fmtlib/fmt.git
 	GIT_TAG 12.1.0
@@ -13,7 +13,7 @@ FetchContent_Declear(
 FetchContent_MakeAvailable(fmt)
 
 if(BUILD_TESTS)
-	FetchContent_Declear(
+	FetchContent_Declare(
 		googletest
 		GIT_REPOSITORY git@github.com:google/googletest.git
 		GIT_TAG v1.17.0
